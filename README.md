@@ -2,7 +2,7 @@
 Mini táblázatkezelő program. Adatok bevitele, módosítása, rajtuk értelmezett függvények végrehajtása, a cellaértékek megjelenítése, illetve táblázatok mentése, betöltése. Grafikus felületen keresztül való kezelés.
 
 2.	Felhasználói dokumentáció
-    •	Cellába írás: dupla klikk/kiválasztás és írás, véglegesítés: enter.ú
+    •	Cellába írás: dupla klikk/kiválasztás és írás, véglegesítés: enter.
 
     •	Cellákat kijelölve: másolás: ctrl+c (egy a programon belüli vágólapra); beillesztés: ctrl+v (mindig bal felső cellához illeszt); törlés: delete. Sorokra/oszlopokra az összes oszlop/sor kijelölhető az adott sorban/oszlopban, shift nyomvatartásával egy kiválasztás bővíthető.
 
@@ -12,5 +12,5 @@ Mini táblázatkezelő program. Adatok bevitele, módosítása, rajtuk értelmez
 
     •	File kezelés: bal felső sarokban lévő gomb, a megjelenő menüben bevihető a file elérési útvonal majd a megfelelő gomb véglegesíti, a read funkciónál az első mező az értékeket elválasztó karakter. A file formátumát a program nem teszteli.
 
-4.	Egyéb
+4.	Egyéb  
 •	Felhasznált könyvtár: https://johanley.github.io/formula4j/index.html
