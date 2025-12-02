@@ -59,7 +59,7 @@ public class CellFormula
         return point;
     }
 
-    public boolean evaluate() //check for recursion
+    public boolean evaluate()
     {
         String oldValue = value;
         Map<String, Decimal> variables = new LinkedHashMap<String, Decimal>();
