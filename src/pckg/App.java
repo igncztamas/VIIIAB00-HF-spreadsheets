@@ -18,6 +18,8 @@ public class App extends JFrame
     public App()
     {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        setTitle("new_table");
             
         table = new Table(this, new DefaultTableModel());
   

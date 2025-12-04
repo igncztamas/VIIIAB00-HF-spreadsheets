@@ -9,7 +9,6 @@ import java.awt.event.MouseWheelEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
 
 import javax.swing.AbstractAction;
@@ -39,8 +38,7 @@ public class Table extends JTable
 
     private Map<Point, ArrayList<CellFormula>> dependentFormulas;
     private Map<Point, CellFormula> formulas;
-    private LinkedList<Point> hasCalledEval;
-
+    private Point initialPoint;
     private RowHeader rowHeader;
     private ColumnHeader columnHeader;
     private JTextField selectedValue;
@@ -90,7 +88,6 @@ public class Table extends JTable
         clipboard = new HashMap<Point, Object>();
         dependentFormulas = new HashMap<>();
         formulas = new HashMap<>();
-        hasCalledEval = new LinkedList<Point>();
     }
 
     @Override
@@ -190,25 +187,27 @@ public class Table extends JTable
                             formulas.put(p, (CellFormula)getValueAt(p.y, p.x));                            
                         }
                 }
-                updateCellsRecursive(p, Table.this);
-                hasCalledEval.clear();
+                initialPoint = p;
+                if (dependentFormulas.get(p) != null)
+                {
+                    for (CellFormula i : dependentFormulas.get(p))
+                        if (i.evaluate())
+                            updateCellsRecursive(i.getPoint());
+                    repaint();
+                }
             }
         });
     }
 
-    private void updateCellsRecursive(Point p, Table t)
+    private void updateCellsRecursive(Point p)
     {
         if (dependentFormulas.get(p) != null)
         {
-            if (hasCalledEval.contains(p))
+            if (p.equals(initialPoint))
                 ((CellFormula)getValueAt(p.y, p.x)).fail();
-            else
-                hasCalledEval.add(p);
             for (CellFormula i : dependentFormulas.get(p))
-            {
                 if (i.evaluate())
-                    updateCellsRecursive(i.getPoint(), t);
-            }
+                    updateCellsRecursive(i.getPoint());
             repaint();
         }
     }

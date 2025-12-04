@@ -19,12 +19,16 @@ class FilePopUp extends JPopupMenu
         JPanel readPanel = new JPanel(new BorderLayout(8,0));
         Dimension bd = new Dimension(64,20);
         JTextField saveField = new JTextField(16);
+            saveField.setText("new_table");
             saveField.setToolTipText("file");
         JTextField loadField = new JTextField(16);
+            loadField.setText("old_table");
             loadField.setToolTipText("file");
         JTextField readField1 = new JTextField(4);
+            readField1.setText(",");
             readField1.setToolTipText("delimiter");
         JTextField readField2 = new JTextField(16);
+            readField2.setText("new_table");
             readField2.setToolTipText("file");
         
         JButton save = new JButton("save");
